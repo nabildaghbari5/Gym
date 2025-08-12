@@ -1,0 +1,69 @@
+/* Container for pagination with modern styling */
+.pagination-container {
+    font-size: 0.75rem; /* Slightly smaller text for compact design */
+    padding: 0.5rem 1rem; /* Adjust padding for a more compact look */
+    background-color: #ffffff; /* Clean white background */
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #e1e1e1; /* Light border for subtle separation */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  /* Style for the page size selector */
+  .pagination-select {
+    border: 1px solid #d1d5db; /* Subtle border */
+    border-radius: 6px; /* Rounded corners */
+    padding: 0.25rem 0.75rem; /* Adjust padding for compactness */
+    background-color: #f9fafb; /* Light background for input */
+    cursor: pointer; /* Pointer cursor for better UX */
+    font-size: 0.75rem; /* Smaller font size */
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s, background-color 0.3s; /* Smooth transitions */
+  }
+  
+  .pagination-select:focus {
+    border-color: #4f46e5; /* Highlight border on focus */
+    background-color: #ffffff; /* Ensure white background on focus */
+  }
+  
+  /* Style for the pagination info */
+  .pagination-info {
+    color: #4b5563; /* Darker text color for readability */
+    font-weight: 500; /* Slightly bolder font */
+  }
+  
+  /* Container for pagination buttons */
+  .pagination-buttons {
+    margin-left: auto; /* Align buttons to the right */
+  }
+  
+  /* Style for pagination buttons */
+  .pagination-btn {
+    border: 1px solid #d1d5db; /* Subtle border */
+    border-radius: 50%; /* Circular buttons */
+    background-color: #ffffff; /* White background */
+    color: #4b5563; /* Dark text color */
+    width: 2rem; /* Smaller width and height */
+    height: 2rem; /* Smaller width and height */
+    display: flex; /* Flexbox for centering */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 1rem; /* Smaller font size for icons */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transitions */
+  }
+  
+  .pagination-btn:hover {
+    background-color: #e4e7eb; /* Light gray background on hover */
+    border-color: #cbd5e1; /* Slightly darker border on hover */
+  }
+  
+  .pagination-btn:disabled {
+    cursor: not-allowed; /* Change cursor for disabled state */
+    color: #9ca3af; /* Gray color for disabled text */
+    border-color: #e1e1e1; /* Light gray border for disabled state */
+    background-color: #f3f4f6; /* Very light gray background for disabled state */
+  }
+  
+  .badge { 
+    background-color: #8b0000; /* Rouge foncé */
+  }

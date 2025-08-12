@@ -1,0 +1,77 @@
+<app-breadcrumbs 
+ title="Adhérents avec abonnement expiré" 
+ image="assets/images/abonnement.png"></app-breadcrumbs>
+<div>
+    <app-reusable-table 
+    [data]="adherents" 
+    [columns]="columns"
+    [title]="'Adhérents avec abonnement expiré'"
+    [statusOptions]="statusOptions"
+    [showAddButton]="false"
+    [actions]="actions" 
+    (actionClicked)="onAction($event)"
+    (add)="openModal()" 
+    (search)="onFilterChange($event)"      
+     >
+    </app-reusable-table>
+  </div>
+  <div class="row align-items-center mt-4 pt-2" id="pagination-element">
+    <div class="col-sm"></div>
+    <div class="col-sm-auto mt-3 mt-sm-0">
+        <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="adherentsPage"
+         (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+       </app-pagination>
+    </div>    
+</div>
+<br>
+
+
+<app-modal  
+ [title]="isUpdate ? 'Renouveler abonnement' : 'Ajouter un nouveau adhérent'"
+ [formGroup]="signupForm"
+ (save)="OnSave()"
+ (isUpdate)="isUpdate=false"
+ > 
+<div class="row">
+    <!-- Prix Input -->
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="mb-3">
+          <label class="form-label" for="mois">Nombre de mois d'abonnement</label>
+          <input type="number" class="form-control" id="mois" formControlName="months" placeholder="Nombre de mois d'abonnement">
+      </div>
+  </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <div class="mb-0">
+        <label class="form-label" for="prix">Prix</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="prix" 
+          formControlName="price" 
+          placeholder="Entrez le prix">
+      </div>
+    </div> 
+    <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="mb-0">
+          <label class="form-label" for="prix">Montant à payer (DT)</label>
+          <div 
+          class="card flex-grow-1 bg-light shadow-sm border-primary" 
+          style="border-left: 4px solid #007bff; border-radius: 8px;">
+          <div class="card-body d-flex align-items-center justify-content-center p-2">
+            <p 
+              class="mb-0 fw-bold text-primary" 
+              style="font-size: 1.5rem; line-height: 1;">
+              {{ signupForm.get('montantAPayer')?.value | number:'1.2-2' }} DT
+            </p>
+          </div>
+        </div>
+        </div>
+    </div>
+  
+    <!-- Montant à Payer -->
+  
+  </div>
+  
+</app-modal>
+
+<app-confirm-dialog #deleteModal></app-confirm-dialog>  

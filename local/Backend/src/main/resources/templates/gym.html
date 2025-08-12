@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification d'Expiration d'Abonnement</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #8b0000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px 30px;
+        }
+        .content h2 {
+            font-size: 20px;
+            color: #8b0000;
+            margin-bottom: 15px;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .user-info {
+            background-color: #f8f8f8;
+            border: 1px solid #ececec;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .user-info p {
+            margin: 10px 0;
+            font-size: 15px;
+            color: #555;
+        }
+        .user-info p strong {
+            color: #8b0000;
+        }
+        .activation-code {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #8b0000;
+            margin: 20px 0;
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .action {
+            text-align: center;
+        }
+        .action a {
+            display: inline-block;
+            margin: 15px auto;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #8b0000;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(139, 0, 0, 0.3);
+            transition: 0.3s ease;
+        }
+        .action a:hover {
+            background-color: #650000;
+            box-shadow: 0 6px 12px rgba(101, 0, 0, 0.4);
+        }
+        .footer {
+            background-color: #f8f8f8;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            border-top: 1px solid #ececec;
+        }
+        .footer a {
+            color: #8b0000;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        Notification d'Expiration d'Abonnement
+    </div>
+    <div class="content">
+        <h2>Bonjour,</h2>
+        <p>Nous souhaitons vous informer que l'abonnement de l'adhérent suivant a expiré :</p>
+        <div class="user-info">
+            <p>👤 <strong>Nom :</strong> <span th:text="${firstname}"></span></p>
+            <p>👤 <strong>Prénom :</strong> <span th:text="${lastname}"></span></p>
+            <p>📞 <strong>Téléphone :</strong> <span th:text="${telephone}"></span></p>
+            <p>📅 <strong>Date d'inscription :</strong> <span th:text="${dateInscription}"></span></p>
+            <p>📅 <strong>Date d'expiration :</strong> <span th:text="${dateExpiration}"></span></p>
+        </div>
+        <p>Veuillez prendre les mesures nécessaires pour informer l'adhérent ou renouveler son abonnement.</p>
+
+    </div>
+    <div class="footer">
+        <p>Nous restons à votre disposition pour toute information complémentaire.</p>
+    </div>
+</div>
+</body>
+</html>

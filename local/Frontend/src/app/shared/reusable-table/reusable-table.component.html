@@ -1,0 +1,137 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card" id="tableCard">
+      <div class="card-body">
+        <div class="row align-items-center g-2">
+          <div class="col-lg-4 me-auto">
+            <h6 class="card-title mb-0">
+              {{ title }}
+              <span class="badge  ms-1 align-baseline">{{ data.length }}</span>
+            </h6>
+          </div>
+          <div class="col-lg-auto">
+            <div class="hstack flex-wrap gap-2">
+              <button class="btn btn-subtle-danger" *ngIf="checkedVal.length > 0" id="remove-actions">
+                <i class="ri-delete-bin-2-line" (click)="onClickDeleteAll()">&nbsp; Supprimer</i>
+              </button>
+                <div class="col-lg-auto" *ngIf="showAddButton"> 
+                  <div class="hstack flex-wrap gap-2">
+                    <a href="javascript:void(0);" class="btn btn-primary" (click)="onAdd()">
+                      <i class="bi bi-plus-circle align-baseline me-1"></i> {{ addButtonLabel }}
+                    </a>
+                  </div>
+                </div>
+            </div>
+        </div><!--end col-->
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive table-card">
+          <table class="table table-centered align-middle table-custom-effect table-nowrap mb-0">
+            <thead class="text-muted">
+              <tr>
+                <!--
+                  <th>  
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="masterSelected" (change)="checkUncheckAll($event)">
+                </th>
+                -->   
+              
+                <th *ngFor="let column of columns" >
+                  <ng-container *ngIf="!isSearching[column.key]; else searchInput">
+                    <span >{{ column.label }}</span>
+                    <i *ngIf="column.sortable" class="bi bi-search" style="margin-left: 100px;" (click)="toggleSearch(column.key)"></i>
+                  </ng-container>
+                  <ng-template #searchInput>
+                    <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerms[column.key]" (keyup)="onSearch(column.key)">&nbsp;
+                    <a  class="btn btn-subtle-danger btn-icon btn-sm edit-item-btn" (click)="toggleSearch(column.key)"><i class="ph-x"></i></a>
+                  </ng-template> 
+                </th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="list form-check-all">
+              <tr *ngFor="let item of data">
+                <!--
+                 <td>
+                  <input class="form-check-input" type="checkbox" [(ngModel)]="item.selected" (change)="checkIfAllSelected()">
+                </td>
+                -->
+               
+                <!-- Gestion des colonnes -->
+                <ng-container *ngFor="let column of columns">
+                  
+                  <td *ngIf="column.key === 'groups' || column.key === 'roles'">
+                    {{ item[column.key] | nestedData:'name' }}
+                  </td>
+                  <td *ngIf="column.key !== 'status' 
+                            && column.key !== 'groups' 
+                            && column.key !== 'roles' ">
+                    {{ item[column.key] }} 
+                  </td>
+                  <!-- Gestion du statut avec ngClass -->
+                  <td *ngIf="column.key === 'status' || column.key === 'suspended'" class="status">
+                    <span class="badge" [ngClass]="getStatusClass(item[column.key])">
+                      {{ getStatusLabel(item[column.key]) }}
+                    </span> 
+                  </td>                  
+                </ng-container>
+
+                <!-- Actions (prendre en consideration les button dropDown *********)-->
+                <td>
+                  <ul class="d-flex gap-2 list-unstyled mb-0">
+                    <ng-container *ngFor="let action of actions">
+                      <li *ngIf="action.visible">
+                        <div *ngIf="action.type === 'control'; else regularButton" class="dropdown">
+  
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <!-- Boucle sur les statuts passés par le parent -->
+                            <li *ngFor="let status of statusOptions">
+                              <a class="dropdown-item" href="javascript:void(0);"
+                                 (click)="onActionClick(item.id, status)">{{ status }}</a>
+                            </li>
+                          </ul>
+                          <ul class="d-flex gap-2 list-unstyled mb-0">
+                            <li class="dropdown mb-3" dropdown>
+                              <button class="btn btn-subtle-primary btn-icon btn-sm " 
+                                      type="button" dropdownToggle id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <i [class]="action.iconClass"></i>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" *dropdownMenu>
+                                <li *ngFor="let status of statusOptions">
+                                  <a class="dropdown-item" href="javascript:void(0);"
+                                     (click)="onActionClick(item.id, status)">{{ status }}</a>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                         
+                        </div>
+                        <ng-template #regularButton>
+                          <a href="javascript:void(0);" 
+                             [class]="action.buttonClass"
+                             (click)="onActionClick(item.id, action.type)">
+                            <i [class]="action.iconClass"></i>
+                          </a>
+                        </ng-template>
+                      </li>
+                     
+                    </ng-container>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Message si aucun résultat -->
+          <div class="noresult" *ngIf="data.length === 0">
+            <div class="text-center py-4">
+              <i class="ph-magnifying-glass fs-1 text-primary"></i>
+              <h5 class="mt-2">Aucun résultat trouvé</h5>
+              <p class="text-muted mb-0">Aucun résultat ne correspond à votre recherche.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

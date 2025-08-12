@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" 
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" 
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI" 
+                  xmlns:camunda="http://camunda.org/schema/1.0/bpmn" 
+                  id="Definitions_0fr9mxs" 
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+  
+  <bpmn:process id="my_project_process" isExecutable="true" camunda:historyTimeToLive="180">
+    <!-- Start Event -->
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>SequenceFlow_1fp17al</bpmn:outgoing>
+    </bpmn:startEvent>
+    
+    <!-- Service Task -->
+    <bpmn:serviceTask id="say_hello" name="Say Hello to Demo" camunda:class="com.mycompany.CustomServiceTask">
+      <bpmn:incoming>SequenceFlow_1fp17al</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_16gzt2m</bpmn:outgoing>
+    </bpmn:serviceTask>
+    
+    <!-- End Event -->
+    <bpmn:endEvent id="EndEvent_0x6ir2l" name="End">
+      <bpmn:incoming>SequenceFlow_16gzt2m</bpmn:incoming>
+    </bpmn:endEvent>
+    
+    <!-- Sequence Flows -->
+    <bpmn:sequenceFlow id="SequenceFlow_1fp17al" sourceRef="StartEvent_1" targetRef="say_hello" />
+    <bpmn:sequenceFlow id="SequenceFlow_16gzt2m" sourceRef="say_hello" targetRef="EndEvent_0x6ir2l" />
+  </bpmn:process>
+  
+  <!-- BPMN Diagram with Shapes and Edges for the process -->
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="my_project_process">
+      
+      <!-- Start Event Shape -->
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      
+      <!-- Service Task Shape -->
+      <bpmndi:BPMNShape id="ServiceTask_say_hello_di" bpmnElement="say_hello">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      
+      <!-- End Event Shape -->
+      <bpmndi:BPMNShape id="EndEvent_0x6ir2l_di" bpmnElement="EndEvent_0x6ir2l">
+        <dc:Bounds x="432" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      
+      <!-- Sequence Flow Edges -->
+      <bpmndi:BPMNEdge id="SequenceFlow_1fp17al_di" bpmnElement="SequenceFlow_1fp17al">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      
+      <bpmndi:BPMNEdge id="SequenceFlow_16gzt2m_di" bpmnElement="SequenceFlow_16gzt2m">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="432" y="117" />
+      </bpmndi:BPMNEdge>
+      
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

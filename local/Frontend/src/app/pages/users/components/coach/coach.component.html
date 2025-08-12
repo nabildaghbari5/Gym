@@ -1,0 +1,99 @@
+
+<app-breadcrumbs  
+  title="Les coachs" 
+  image ="assets/images/coach.png" 
+></app-breadcrumbs>
+  <!-- Le tableau réutilisable -->
+  <div>
+    <app-reusable-table 
+    [data]="users" 
+    [columns]="columns"
+    [title]="'Liste des coachs'"
+    [statusOptions]="statusOptions"
+    [showAddButton]="true"
+    [addButtonLabel]="'Ajouter coachs'" 
+    [actions]="actions" 
+    (add)="openModal()" 
+    (actionClicked)="onAction($event)" 
+    (search)="onFilterChange($event)" >
+    </app-reusable-table>
+  </div>
+
+<app-confirm-dialog #deleteModal></app-confirm-dialog>  
+<!--Pagination-->
+<div class="row align-items-center mt-4 pt-2" id="pagination-element">
+  <div class="col-sm"></div>
+  <div class="col-sm-auto mt-3 mt-sm-0">
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="userPage"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+  </app-pagination>
+  </div>
+</div>
+<br>
+<!-- Le modal réutilisable -->
+<app-modal  
+ [title]="isUpdate ? 'Modifier un coachs' : 'Ajouter un nouveau coachs'"
+ [formGroup]="signupForm"
+ (save)="saveUser()" 
+ >  
+ <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-email-input">Nom</label>
+            <input type="text" class="form-control"
+             formControlName="lastname" 
+             placeholder="Nom"
+               >
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-username-input1">Prénom</label>
+            <input type="text" class="form-control" id="gen-info-username-input1" formControlName="firstname" placeholder="Prénom">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-username-input2">N° Tél</label>
+            <input type="text" class="form-control" id="gen-info-username-input2" formControlName="telephone" placeholder="N° Tél">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-email-input">Email</label>
+            <input type="text" class="form-control" id="gen-info-email-input" formControlName="email" placeholder=" Email">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-username-input1">Activités</label>
+            <ng-select [multiple]="true" 
+            [items]="groups" 
+            bindLabel="name" 
+            bindValue="id"
+            placeholder="Sélectionner une activité"
+            formControlName="groupIds"
+            >                
+            </ng-select>
+        </div>  
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-email-input">Status</label>
+            <ng-select 
+            [items]="StatusName"
+            bindLabel="name"
+            bindValue="name"
+            formControlName="status"
+            placeholder="Sélectionner un status">
+          </ng-select>
+        </div>
+    </div>
+</div>
+</app-modal>
+
+
+
+

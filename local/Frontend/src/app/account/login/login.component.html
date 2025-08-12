@@ -1,0 +1,109 @@
+<section class="auth-page-wrapper py-5 position-relative d-flex align-items-center justify-content-center min-vh-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <div class="card mb-0">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-xxl-5">
+                            <img src="assets/images/salleSport.png" alt="Logo Fitness California Gym" class="sport-logo">
+                        </div>
+                        <!--end col-->
+                        <div class="col-xxl-6 mx-auto">
+                            <div class="card mb-0 border-0 shadow-none mb-0">
+                                <div class="card-body p-sm-5 m-lg-4">
+                                    <div class="text-center mt-5">
+                                        <h1 class="title-gym">FITNESS CALIFORNIA GYM</h1>
+                                    </div>
+                                    <div class="p-2 mt-5">
+                                        <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                                            <div class="mb-3">
+                                                <label for="username" class="form-label">Email <span
+                                                        class="text-danger">*</span></label>
+                                                <div class="position-relative ">
+                                                    <input type="email" formControlName="email" class="form-control"
+                                                        id="email" placeholder="Entrez votre adresse e-mail"
+                                                        [class.is-invalid]="isControlInvalid('email')"
+                                                        [class.is-valid]="isControlValid('email')"
+                                                        [ngStyle]="{ 'border-color': isControlValid('email') && isControlTouched('email') ? '#259bed   ' : isControlInvalid('email') ? 'red' : '' }" />
+
+                                                    <div class="error-messages">
+                                                        <div *ngIf="loginForm.controls['email']?.errors?.['required'] && loginForm.controls['email'].touched"
+                                                            class="form-text text-danger text-warning"
+                                                            [ngClass]="'error'" style="font-weight: bold;">
+                                                            Email est requise.
+                                                        </div>
+                                                        <div *ngIf="loginForm.controls['email']?.errors?.['email'] && loginForm.controls['email'].touched"
+                                                            class="form-text text-danger text-warning"
+                                                            [ngClass]="'error'" style="font-weight: bold;">
+                                                            L'adresse e-mail doit être une adresse e-mail valide.
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="password-input">Mot de passe <span
+                                                        class="text-danger">*</span></label>
+                                                <div class="position-relative auth-pass-inputgroup mb-3">
+                                                    <div class="position-relative auth-pass-inputgroup mb-3">
+                                                        <input [type]="fieldTextType ? 'text' : 'password'"
+                                                            class="form-control pe-5 password-input"
+                                                            placeholder="Enter password" id="password-input"
+                                                            formControlName="password"
+                                                            [class.is-invalid]="isControlInvalid('password')"
+                                                            [class.is-valid]="isControlValid('password')"
+                                                            [ngStyle]="{ 'border-color': isControlValid('password') && isControlTouched('password') ? '#259bed' : isControlInvalid('password') ? 'red' : '' }" />
+                                                        <div class="error-messages">
+                                                            <div *ngIf="loginForm.controls['password']?.errors?.['required'] && loginForm.controls['password'].touched"
+                                                                class="form-text text-danger text-warning"
+                                                                [ngClass]="'error'" style="font-weight: bold;">
+                                                                Mot de passe est requise.
+                                                            </div>
+                                                            <div *ngIf="loginForm.controls['password']?.errors?.['minlength'] && loginForm.controls['password'].touched"
+                                                                class="form-text text-danger text-warning"
+                                                                [ngClass]="'error'" style="font-weight: bold;">
+                                                                Le mot de passe doit contenir au moins 8 caractères.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="mt-3 d-grid">
+                                                <button class="btn sport-btn btn-save" type="submit"
+                                                    [disabled]="loginForm.invalid">Connexion</button>
+                                            </div>
+
+
+
+                                        </form>
+
+                                        <div class="mt-4 text-center">
+                                            <a routerLink="/account/auth/pass-reset" class="text-muted"><i
+                                                    class="mdi mdi-lock mr-1"></i>Mot de passe oublié ?</a>
+                                        </div>
+
+                                      
+
+
+                                    </div>
+                                </div><!-- end card body -->
+                            </div><!-- end card -->
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</section>

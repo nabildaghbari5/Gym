@@ -1,0 +1,39 @@
+.page-title-box {
+    display: flex;
+    align-items: center; /* Centrer verticalement l'image et le titre */
+    justify-content: space-between;
+    padding: 10px 0; /* Ajuster l'espacement autour de l'élément */
+}
+
+.page-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5rem; /* Taille de police ajustée pour mieux correspondre à l'image */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #8b0000; /* Rouge foncé */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    margin: 0 0 0 15px; /* Marge gauche pour espacer le titre de l'image */
+    display: inline-block;
+}
+
+.page-title-icon {
+    font-size: 1.5rem;
+    color: #8b0000;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.page-title-right .breadcrumb-item {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.page-title-right .breadcrumb-item.active {
+    color: #8b0000;
+}
+
+.page-title-box img {
+    width: 50px; /* Garder la taille de l'image constante */
+    height: 50px; /* Assurer que l'image est carrée */
+    object-fit: cover; /* Maintenir l'aspect sans déformation */
+}

@@ -1,0 +1,28 @@
+<app-breadcrumbs 
+ title="Liste des coachs par activité" 
+ image="assets/images/leadership.png"
+ ></app-breadcrumbs>
+<div>
+    <app-reusable-table 
+    [data]="listUser" 
+    [columns]="columns"
+    [title]="'Liste des coachs par activité'" 
+    [actions]="actions" 
+    (actionClicked)="onAction($event)"
+    (search)="onFilterChange($event)"     
+    >
+    </app-reusable-table>
+</div>
+<div class="d-flex justify-content-between align-items-center mt-4 pt-2 flex-wrap" id="pagination-element">
+    <div class="mb-2">
+      <a class="btn btn-light d-flex align-items-center" routerLink="/users/groups">
+        <i class="bx bx-left-arrow-alt align-baseline me-1"></i> Retourne
+      </a>
+    </div>
+    <div>
+      <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="groupUserPage"  
+        (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+      </app-pagination>
+    </div>
+</div>
+<app-confirm-dialog #deleteModal></app-confirm-dialog>  

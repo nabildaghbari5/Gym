@@ -1,0 +1,50 @@
+
+.custom-card {
+  border: 2px solid #8b0000; /* Bordure rouge foncé homogène */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-header {
+  background: linear-gradient(135deg, #8b0000, #ff6347); /* Dégradé rouge foncé à orange clair */
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-primary {
+  color: #8b0000 !important; /* Rouge foncé pour les icônes */
+}
+
+.badge {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+}
+
+.section-title {
+  border-bottom: 2px solid #8b0000;
+  color: #8b0000;
+  margin-bottom: 1.5rem;
+}
+
+i {
+  font-size: 1.5rem;
+  vertical-align: middle;
+  margin-right: 8px;
+  color: #8b0000; /* Rouge foncé homogène */
+}
+
+.card-body p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #343a40; /* Couleur sombre pour le texte */
+}
+
+.display-6 {
+  font-size: 1.5rem;
+  color: #343a40;
+  font-weight: bold;
+}

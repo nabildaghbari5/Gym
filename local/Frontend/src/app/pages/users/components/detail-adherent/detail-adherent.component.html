@@ -1,0 +1,78 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mx-auto">
+        <div class="card shadow-lg border-0 custom-card">
+          <!-- Header -->
+          <div class="card-header bg-gradient-primary text-white text-center py-4">
+            <h4>Détails de l'Adhérent</h4>
+          </div>
+          <!-- Card Body -->
+          <div class="card-body">
+            <!-- Adherent Details -->
+            <div class="row mb-4">
+              <div class="col-md-8">
+                <h5 class="text-muted">Nom & Prénom :</h5>
+                <p class="font-weight-bold display-6">{{adherentDetails.firstname}} {{adherentDetails.lastname}}</p>
+              </div>
+              <div class="col-md-4 text-end">
+                <h5 class="text-muted">Statut :</h5>
+                <span
+                  class="badge {{adherentDetails.status === 'Actif' ? 'bg-success' : 'bg-danger'}}">
+                  {{adherentDetails.status}}
+                </span>
+              </div>
+            </div>
+
+            <!-- Additional Information -->
+            <h5 class="section-title">Informations Supplémentaires</h5>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <p><i class="mdi mdi-phone text-primary me-2"></i><strong>Téléphone :</strong> {{adherentDetails.telephone}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p><i class="mdi mdi-calendar text-primary me-2"></i><strong>Date de Naissance :</strong> {{adherentDetails.dateDeNaissance}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p><i class="mdi mdi-cash text-primary me-2"></i><strong>Prix :</strong> {{adherentDetails.price}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p><i class="mdi mdi-calendar-check text-primary me-2"></i><strong>Âge :</strong> {{adherentDetails.age}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p><i class="mdi mdi-clock-outline text-primary me-2"></i><strong>Mois :</strong> {{adherentDetails.months}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p><i class="mdi mdi-cash-multiple text-primary me-2"></i><strong>Montant :</strong> {{adherentDetails.montantAPayer}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p><i class="mdi mdi-cash-multiple text-primary me-2"></i><strong>Type d’Abonnement :</strong> {{adherentDetails.abonnement}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <p>
+                  <i class="mdi mdi-google-circles-extended text-primary me-2"></i>
+                  <strong>Activités :</strong>
+                </p>
+                <ul class="ps-3">
+                  <li *ngFor="let activite of adherentDetails.activite">
+                    {{ activite.name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Task Dates -->
+            <h5 class="section-title">Dates Importantes</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <p><i class="bx bx-calendar text-primary me-2"></i><strong>Date d’Inscription :</strong> {{adherentDetails.dateInscription}}</p>
+              </div>
+              <div class="col-md-6">
+                <p><i class="bx bx-calendar-check text-primary me-2"></i><strong>Date d’Expiration :</strong> {{adherentDetails.dateExpiration}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

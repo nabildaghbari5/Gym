@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activation du compte</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            text-align: center;
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+        .content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .user-info {
+            background-color: #f4f8fb;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .user-info p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .activation-code {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 20px 0;
+            background-color: #f4f8fb;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .activation-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .activation-link a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .activation-link a:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 86, 179, 0.4);
+        }
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">Activation du compte</div>
+    <div class="content">
+        <h2>Bienvenue, <span th:text="${username}"></span> !</h2>
+        <p>Merci de rejoindre notre plateforme. Voici les détails de votre inscription :</p>
+        <div class="user-info">
+            <p>📧 <strong>Email :</strong> <span th:text="${to}"></span></p>
+            <p>🔒 <strong>Mot de passe :</strong> <span th:text="${password}"></span></p>
+            <p>📞 <strong>Téléphone :</strong> <span th:text="${telephone}"></span></p>
+            <p>🧑‍💻 <strong>Fonction :</strong> <span th:text="${function}"></span></p>
+            <p>🎯 <strong>Rôles :</strong>
+                <span th:each="role : ${role}" th:text="${role.name} + ', '"></span>
+            </p>
+        </div>
+        <p>Pour activer votre compte, utilisez le code suivant :</p>
+        <div class="activation-code">
+            <span th:text="${activation_code}"></span>
+        </div>
+        <div class="activation-link">
+            <a th:href="${confirmationUrl}" target="_blank">Activer mon compte</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Si vous avez des questions, contactez-nous à <a href="mailto:contact@bewisetech.fr">contact@bewisetech.fr</a>.</p>
+        <p>Merci de votre confiance !</p>
+    </div>
+</div>
+</body>
+</html>

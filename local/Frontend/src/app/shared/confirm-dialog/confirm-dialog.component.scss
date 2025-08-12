@@ -1,0 +1,60 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker backdrop for better focus */
+  padding-top: 5px;
+}
+
+.modal-dialog.custom-modal {
+  margin-top: 8rem !important;
+  max-width: 500px;
+}
+
+.modal-body {
+  background-color: #f8f9fa; /* Subtle light gray for better contrast */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-backdrop.in {
+  opacity: 0.8;
+}
+
+.confirm-message {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #343a40; /* Neutral dark color */
+}
+
+.close-modal-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6c757d; /* Subtle gray for close icon */
+  transition: color 0.3s ease;
+}
+
+.close-modal-icon:hover {
+  color: #dc3545; /* Red on hover */
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  box-shadow: 0px 4px 10px rgba(220, 53, 69, 0.4);
+}

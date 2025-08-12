@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="glass-card">
+      <!-- Section des filtres -->
+      <section class="filters-section">
+        <div class="select-container">
+          <label for="monthSelect" class="select-label">Mois</label>
+          <select id="monthSelect" [(ngModel)]="selectedMonth" (change)="onFilterChange()">
+            <option *ngFor="let month of months" [value]="month.name">{{ month.name }}</option>
+          </select>
+        </div>
+  
+        <div class="select-container">
+          <label for="yearSelect" class="select-label">Année</label>
+          <select id="yearSelect" [(ngModel)]="selectedYear" (change)="onFilterChange()">
+            <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+      </section>
+  
+      <!-- Section de la table -->
+      <section class="table-section">
+        <div class="table-header">
+          <div class="row">
+            <div class="col-xl-8 col-lg-6 col-md-12">
+              <h4>Transactions Récentes</h4>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12">
+              <div class="card flex-grow-1 bg-light shadow-sm border-primary" style="border-left: 4px solid #007bff; border-radius: 8px;">
+                <div class="card-body d-flex align-items-center justify-content-center p-2">
+                  <h6 class="mb-0 fw-bold text-primary" style="font-size: 1.5rem; line-height: 1;">
+                    Budget de mois : {{ budget }} DT
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <table class="payments-table">
+          <thead>
+            <tr>
+              <th>Date de paiement</th>
+              <th>Nom</th>
+              <th>Prénom</th>          
+              <th>Montant payé</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let histo of historiquePaiement">
+              <td>{{ histo.dateInscription }}</td>
+              <td>{{ histo.lastname }}</td>
+              <td>{{ histo.firstname }}</td>
+              <td><span class="status-badge">{{ histo.montantAPayer }} DT</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+  <br>

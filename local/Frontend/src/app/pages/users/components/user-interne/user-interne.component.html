@@ -1,0 +1,301 @@
+
+<app-breadcrumbs  
+  title="Les coachs" 
+  image ="assets/images/coach.png" 
+></app-breadcrumbs>
+  <!-- Le tableau réutilisable -->
+  <div>
+    <app-reusable-table 
+    [data]="users" 
+    [columns]="columns"
+    [title]="'Liste des coachs'"
+    [statusOptions]="statusOptions"
+    [showAddButton]="true"
+    [addButtonLabel]="'Ajouter coachs'" 
+    [actions]="actions" 
+    (add)="openModal()" 
+    (actionClicked)="onAction($event)" 
+    (search)="onFilterChange($event)" >
+    </app-reusable-table>
+  </div>
+
+<!-- Le modal réutilisable -->
+<app-modal  
+ [title]="isUpdate ? 'Modifier un coachs' : 'Ajouter un nouveau coachs'"
+ [formGroup]="signupForm"
+ (save)="saveUser()" 
+ >  
+ <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-email-input">Nom</label>
+            <input type="text" class="form-control"
+             formControlName="lastname" 
+             placeholder="Nom"
+               >
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-username-input1">Prénom</label>
+            <input type="text" class="form-control" id="gen-info-username-input1" formControlName="firstname" placeholder="Prénom">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-username-input2">N° Tél</label>
+            <input type="text" class="form-control" id="gen-info-username-input2" formControlName="telephone" placeholder="N° Tél">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-email-input">Email</label>
+            <input type="text" class="form-control" id="gen-info-email-input" formControlName="email" placeholder=" Email">
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-username-input1">Activités</label>
+            <ng-select [multiple]="true" 
+            [items]="groups" 
+            bindLabel="name" 
+            bindValue="name"
+            placeholder="Sélectionner un groups"
+            formControlName="groups"
+            >          
+            </ng-select>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="mb-3">
+            <label class="form-label" for="gen-info-email-input">Status</label>
+            <ng-select 
+            [items]="StatusName"
+            bindLabel="name"
+            bindValue="name"
+            formControlName="status"
+            placeholder="Sélectionner un status">
+          </ng-select>
+        </div>
+    </div>
+</div>
+</app-modal>
+<!--Pagination-->
+<div class="row align-items-center mt-4 pt-2" id="pagination-element">
+    <div class="col-sm"></div>
+    <div class="col-sm-auto mt-3 mt-sm-0">
+      <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="userPage"
+      (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+    </app-pagination>
+    </div>
+  </div>
+
+<br>
+
+
+
+
+
+
+<!--
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card" id="coursesList">
+            <div class="card-body">
+                <div class="row align-items-center g-2"> 
+                    <div class="col-lg-3 me-auto">
+                        <h6 class="card-title mb-0">
+                            Liste des utilisateurs internes
+                            <span class="badge bg-primary ms-1 align-baseline">{{ users.length }}</span>
+                        </h6>
+                    </div>
+                    <div class="col-lg-auto">
+                        <div class="hstack flex-wrap gap-2">
+                            <button class="btn btn-subtle-danger d-none" id="remove-actions">
+                                <i class="ri-delete-bin-2-line"></i>
+                            </button>
+                            <a href="javascript:void(0);" class="btn btn-primary" (click)="extralarge.show()">
+                                <i class="bi bi-plus-circle align-baseline me-1"></i> Ajouter utilisateur
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive table-card">
+                    <table class="table table-centered align-middle table-custom-effect table-nowrap mb-0">
+                        <thead class="text-muted">
+                            <tr>
+                                <th scope="col">ID</th> 
+                                <th scope="col">Nom & Prénom <i class="bi bi-search" style="margin-left: 50px;"></i></th>
+                                <th scope="col">Email <i class="bi bi-search" style="margin-left: 50px;"></i></th>
+                                <th scope="col" class="sort cursor-pointer" >Dernière mise à jour</th>
+                                <th scope="col">Groupe <i class="bi bi-search" style="margin-left: 50px;"></i></th>
+                                <th scope="col" class="sort cursor-pointer" >Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>  
+                        <tbody class="list form-check-all">
+                            <tr *ngFor="let data of users;">
+                                <td >{{data.id}}</td>
+                                <td >{{data.lastname}} {{data.firstname}}</td>
+                                <td >{{data.email}}</td>
+                                <td >{{data.lastModifiedDate | date:'yyyy-MM-dd HH:mm'}}</td> 
+                                <td >{{data.fonction}}</td>
+                                <td class="status">
+                                    <span class="badge" 
+                                          [ngClass]="{
+                                            'bg-info-subtle text-warning': data.status === 'En attente', 
+                                            'bg-danger-subtle text-danger': data.status === 'Inactif',
+                                            'bg-success-subtle text-success': data.status === 'Actif'
+                                          }">
+                                        {{ data.status === '0' ? 'En attente' : data.status }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <ul class="d-flex gap-2 list-unstyled mb-0">
+                                        <li>
+                                            <a href="javascript:void(0);" class="btn btn-subtle-secondary btn-icon btn-sm edit-item-btn"
+                                            (click)="onClickUpdate(data.id); extralarge.show() ">
+                                                <i class="ph-pencil"></i>
+                                            </a>
+                                        </li>
+                                        <li class="dropdown mb-3" dropdown>
+                                            <button class="btn btn-subtle-primary btn-icon btn-sm " 
+                                                    type="button" dropdownToggle id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ri-user-settings-line"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1" *dropdownMenu>
+                                                <li><a  class="dropdown-item" (click)="updateStatus(data.id,1)"><i class="success-icon"><span class=" ri-user-follow-line"></span></i>&nbsp;&nbsp; Activer compte</a></li>
+                                                <li><a  class="dropdown-item" (click)="updateStatus(data.id,0)"><i class="danger-icon "><span class=" ri-user-unfollow-line"></span></i>&nbsp; &nbsp; Désactiver compte</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br><br><br>
+                    <div class="noresult" style="display: none;">
+                        <div class="text-center py-4">
+                            <i class="ph-magnifying-glass fs-1 text-primary"></i>
+                            <h5 class="mt-2">Sorry! No Result Found</h5>
+                            <p class="text-muted mb-0">
+                                We've searched more than 150+ Courses We did not find any Courses for you search.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+-->
+
+<!-- Modal d'ajout 
+<div bsModal #extralarge="bs-modal" class="modal fade bs-example-modal-lg" >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myExtraLargeModalLabel" *ngIf="!isUpdate" >Ajouter un nouvel utilisateur interne</h5>
+                <h5 class="modal-title" id="myExtraLargeModalLabel" *ngIf="isUpdate">Modifier utilisateur interne</h5>
+                <button type="button" class="btn-close" (click)="extralarge.hide()"></button>
+            </div>
+            <hr>
+            <form [formGroup]="signupForm"  class="needs-validation" >
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-email-input">Nom</label>
+                                <input type="text" class="form-control"
+                                 formControlName="lastname" 
+                                 placeholder="Nom"
+                                   >
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-username-input1">Prénom</label>
+                                <input type="text" class="form-control" id="gen-info-username-input1" formControlName="firstname" placeholder="Prénom">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-username-input2">N° Tél</label>
+                                <input type="text" class="form-control" id="gen-info-username-input2" formControlName="telephone" placeholder="N° Tél">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-email-input">Email</label>
+                                <input type="text" class="form-control" id="gen-info-email-input" formControlName="email" placeholder=" Email">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-username-input1">Mot de passe</label>
+                                <input type="text" class="form-control" id="gen-info-username-input1" formControlName="password" placeholder="Mot de passe">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-username-input2">Fonction</label>
+                                <input type="text" class="form-control" id="gen-info-username-input2" formControlName="fonction" placeholder="Fonction">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-email-input">Status</label>
+                                <ng-select
+                                [items]="StatusName"
+                                bindLabel="name"
+                                bindValue="name"
+                                formControlName="status">
+                              </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-username-input1">Groups</label>
+                                <ng-select  
+                                [items]="GroupsName" 
+                                bindLabel="name" 
+                                >
+                                    <ng-template ng-optgroup-tmp let-item="item">
+                                        {{item.country || 'Unnamed group'}}
+                                    </ng-template>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="gen-info-username-input2">Roles</label>
+                                <ng-select  
+                              
+                                bindLabel="name" 
+                                placeholder="Sélectionner un rôle"
+                                formControlName="" >
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:void(0);" class="btn btn-link link-danger fw-medium" (click)="extralarge.hide()">
+                        <i class="ri-close-line me-1 align-middle"></i> Fermer
+                    </a>
+                    <button type="submit" class="btn btn-primary" (click)="extralarge.hide()">Enregistrer</button>
+                </div>
+            </form>
+          
+        </div>
+    </div>
+</div>
+-->   

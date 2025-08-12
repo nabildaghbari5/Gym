@@ -1,0 +1,281 @@
+.row {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .col-xl-3 {
+    flex: 1;
+    min-width: 280px;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #8b0000;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .card-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain; /* Pour maintenir le ratio de l'image */
+  }
+  
+  .card-body::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(to right, #4c6ef5, #228be6);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  
+  .card:hover .card-body::before {
+    transform: scaleX(1);
+  }
+  
+  .fs-md {  
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 15px;
+  }
+  
+  h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  /* Couleurs différentes pour chaque carte */
+  .col-xl-3:nth-child(1) .card-body::before {
+    background: linear-gradient(to right, #37b24d, #40c057); /* Vert */
+  }
+
+  
+  .col-xl-3:nth-child(2) .card-body::before {
+    background: linear-gradient(to right, #f03e3e, #ff6b6b); /* Rouge */
+  }
+
+  .col-xl-3:nth-child(3) .card-body::before {
+    background: linear-gradient(to right, #4c6ef5, #228be6); /* Bleu */
+  }
+  .col-xl-3:nth-child(4) .card-body::before {
+    background: linear-gradient(to right, #7950f2, #845ef7); /* Violet */
+  }
+  
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .col-xl-3 {
+      flex: 0 0 calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .col-xl-3 {
+      flex: 0 0 100%;
+    }
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50; /* Texte foncé */
+    margin-top: 15px;
+  }
+  
+  .card-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4c6ef5; /* Bleu vif pour les valeurs */
+    margin-top: 10px;
+  }
+  
+  /* Variation dans les couleurs des valeurs pour chaque carte */
+  .col-xl-3:nth-child(1) .card-value {
+    color: #37b24d; /* Vert pour la carte 3 */
+  }
+
+  .col-xl-3:nth-child(2) .card-value {
+    color: #f03e3e; /* Rouge pour la carte 2 */
+  }
+  
+
+  .col-xl-3:nth-child(3) .card-value {
+    color: #4c6ef5; /* Bleu clair pour la carte 1 */
+  }
+  
+  .col-xl-3:nth-child(4) .card-value {
+    color: #7950f2; /* Violet pour la carte 4 */
+  }
+  
+/////////////////////////////////
+/// historique 
+/// 
+.payment-history-container {
+  margin: 30px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.filters-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 320px;
+}
+
+.filter-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.filter-input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 8px 10px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.filter-input:hover {
+  border-color: #888;
+}
+
+.filter-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .filters-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+//// table 
+/* Style général de la carte */
+.cardTable {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Style du tableau */
+.table-card {
+    padding: 15px;
+}
+
+.table-custom-effect {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* En-tête du tableau */
+.table thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    padding: 12px 15px;
+    border-bottom: 2px solid #e9ecef;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Corps du tableau */
+.table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+/* Effet de survol sur les lignes */
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+/* Style pour le montant */
+.table tbody td:last-child {
+    font-weight: 600;
+    color: #28a745;
+}
+
+/* Style pour la date */
+.table tbody td:nth-child(3) {
+    color: #6c757d;
+}
+
+/* Style responsive */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Style pour le budget du mois */
+.cardTable > div:last-child {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    font-weight: 600;
+    color: #343a40;
+    border-left: 4px solid #28a745;
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 768px) {
+    .table thead th,
+    .table tbody td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .cardTable {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --gradient-primary: linear-gradient(135deg, #6366F1 0%, #818CF8 100%);
+    --gradient-success: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+    --gradient-background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    --shadow-elegant: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-soft: 0 10px 30px rgba(99, 102, 241, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: var(--gradient-background);
+    padding: 3rem 1.5rem;
+    color: #1E293B;
+    
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    padding: 3rem;
+    box-shadow: var(--shadow-elegant);
+    border: 1px solid #8b0000;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.filters-section {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.select-container {
+    position: relative;
+    min-width: 200px;
+}
+
+.select-label {
+    position: absolute;
+    top: -10px;
+    left: 1rem;
+    background: white;
+    padding: 0 0.5rem;
+    font-size: 0.875rem;
+    color: #6366F1;
+    font-weight: 500;
+}
+
+select {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid #E2E8F0;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background: white;
+    cursor: pointer;
+    appearance: none;
+    transition: all 0.3s ease;
+}
+
+select:hover {
+    border-color: #6366F1;
+    transform: translateY(-2px);
+}
+
+.budget-showcase {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.budget-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.budget-card:hover {
+    transform: translateY(-5px);
+}
+
+.budget-info h2 {
+    font-size: 1.5rem;
+    color: #64748B;
+    margin-bottom: 1rem;
+}
+
+.budget-amount {
+    font-size: 4rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+}
+
+.status-pill {
+    background: var(--gradient-success);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transform: translateY(-50%);
+}
+
+.table-section {
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.table-header {
+    background: #F8FAFC;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid #E2E8F0;
+}
+
+.payments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.payments-table th {
+    padding: 1.5rem 2rem;
+    text-align: left;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.payments-table td {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.payments-table tr:hover {
+    background: #F8FAFC;
+}
+
+.transaction-date {
+    color: #64748B;
+    font-weight: 500;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.status-badge {
+    background: #ECFDF5;
+    color: #059669;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-icon {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glass-card {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@media (max-width: 768px) {
+    .budget-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-section {
+        flex-direction: column;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .budget-amount {
+        font-size: 3rem;
+    }
+}

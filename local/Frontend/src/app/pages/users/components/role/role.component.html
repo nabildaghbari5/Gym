@@ -1,0 +1,76 @@
+
+  <!-- Titre de page-->
+<app-breadcrumbs title="Roles" [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+  <!-- Le tableau réutilisable -->
+<div>
+  <app-reusable-table 
+  [data]="roles" 
+  [columns]="columns"
+  [title]="'Liste des rôles'" 
+  [showAddButton]="true"
+  [addButtonLabel]="'Ajouter rôle'" 
+  [actions]="actions" 
+  (add)="openModal()" 
+  (actionClicked)="onAction($event)"
+  (search)="onFilterChange($event)"  
+  (checkedList)="checkedList($event)"  
+  (deleteAll)="onDeleteAllAction()"
+  >
+  </app-reusable-table>
+</div>
+<!-- Le modal réutilisable -->
+<app-modal  
+ [title]="isUpdate ? 'Modifier un rôle' : 'Ajouter un nouveau rôle'"
+ [formGroup]="roleForm"
+ (save)="saveRole()" 
+ >  
+  <div class="row">
+    <div class="col-lg-6 col-md-4 col-sm-12">
+      <div class="mb-3">
+        <label class="form-label" for="gen-info-email-input">Libellé</label>
+        <input type="text" class="form-control" formControlName="name"  placeholder="Libellé">
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-4 col-sm-12">
+      <div class="mb-3">
+        <label class="form-label" for="gen-info-username-input1">Permissions</label>
+        <ng-select  [multiple]="true"
+        [items]="PermissionsName" 
+        bindLabel="name"
+        bindValue="name"
+        formControlName="permissions"
+        placeholder="Sélectionner une permissions">
+      </ng-select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-4 col-sm-12">
+      <div class="mb-3">
+        <label class="form-label" >Description</label>
+        <input type="text" class="form-control"  formControlName="description" placeholder="Description">
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-4 col-sm-12">
+      <div class="mb-3">
+        <label class="form-label" >Statut</label>
+        <ng-select 
+        [items]="StatusName"
+        bindLabel="name"
+        bindValue="name" 
+        formControlName="status"
+        placeholder="Sélectionner un statut">
+      </ng-select>
+      </div>
+    </div>
+  </div>
+</app-modal>
+<!--Pagination-->
+<div class="row align-items-center mt-4 pt-2" id="pagination-element">
+  <div class="col-sm"></div>
+  <div class="col-sm-auto mt-3 mt-sm-0">
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="rolePage"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+  </app-pagination>
+  </div>
+</div>

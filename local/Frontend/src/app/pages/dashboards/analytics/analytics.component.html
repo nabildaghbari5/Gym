@@ -1,0 +1,128 @@
+<!-- Start Breadcrumbs -->
+<app-breadcrumbs title="ANALYTICS" ></app-breadcrumbs>
+<div class="row">
+  <div class="col-xl-3 col-sm-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <img src="assets/images/weightlifter.png"  alt="Abonnement expiré" class="card-img mb-3">
+        <p class="card-title">
+          Adhérents actifs
+        </p>
+        <h3 class="card-value">
+          {{num}}
+        </h3>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="col-xl-3 col-sm-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <img src="assets/images/abonnement.png" alt="Abonnement expiré" class="card-img mb-3">
+        <p class="card-title">
+          Abonnements expirés
+        </p>
+        <h3 class="card-value">
+          {{numInactif}}
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <img src="assets/images/people.png" alt="Abonnement expiré" class="card-img mb-3">
+        <p class="card-title">
+          Nombre total 
+        </p>
+        <h3 class="card-value">
+          {{nombreTotale}} 
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-sm-6">
+    <div class="card">
+      <div class="card-body text-center">
+        <img src="assets/images/cash-register.png" alt="Abonnement expiré" class="card-img mb-3">
+        <p class="card-title">
+          Caisse 
+        </p>
+        <h3 class="card-value">
+          {{montantTotal}} DT
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+<app-breadcrumbs title="Historique de paiement" ></app-breadcrumbs>
+<!--
+<div>
+  <div class="payment-history-container">
+    <div class="filters-container">
+      <div class="filter-group">
+        <label for="monthSelect" class="filter-label">Sélectionnez un mois</label>
+        <ng-select
+          id="monthSelect"
+          class="filter-input"
+          [items]="months"
+          bindLabel="name" 
+          [(ngModel)]="selectedMonth"  
+          (change)="onMonthChange($event)"
+          [searchable]="true"
+          placeholder="Mois"
+          notFoundText="Aucun résultat trouvé">
+        </ng-select>
+      </div>
+      <div class="filter-group">
+        <label for="yearSelect" class="filter-label">Sélectionnez une année</label>
+        <ng-select
+          id="yearSelect"
+          class="filter-input"
+          [items]="years"
+          [(ngModel)]="selectedYear"
+          (change)="onYearChange($event)"
+          [searchable]="true"
+          placeholder="Année"
+          notFoundText="Aucun résultat trouvé">
+        </ng-select>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="cardTable">
+      <div>
+        <div class="table-responsive table-card">
+          <table class="table table-centered align-middle table-custom-effect table-nowrap mb-0">
+            <thead class="text-muted">
+              <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de paiement</th>
+                <th>Montant payé</th>
+              </tr>
+            </thead>
+            <tbody class="list form-check-all" >
+              <tr *ngFor="let histo of historiquePaiement">
+                <td>{{histo.lastname}}</td>
+                <td>{{histo.firstname}}</td>  
+                <td>{{histo.dateInscription}}</td>
+                <td>{{histo.montantAPayer}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+          <tr>
+            <td colspan="4">Budget de mois : {{budget}}</td>
+          </tr>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<app-historique></app-historique>

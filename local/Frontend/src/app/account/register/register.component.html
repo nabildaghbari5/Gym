@@ -1,0 +1,208 @@
+<section class="auth-page-wrapper py-5 position-relative d-flex align-items-center justify-content-center min-vh-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-11">
+                <div class="card mb-0">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-xxl-5">
+                            <div class="card auth-card bg-secondary h-100 border-0 shadow-none d-none d-sm-block mb-0">
+                                <div class="card-body py-5 d-flex justify-content-between flex-column h-100">
+                                    <div class="text-center">
+                                        <h3 class="text-white">Start your journey with us.</h3>
+                                        <p class="text-white opacity-75 fs-base">It brings together your tasks, projects, timelines, files and more</p>
+                                    </div>
+
+                                    <div class="auth-effect-main my-5 position-relative rounded-circle d-flex align-items-center justify-content-center mx-auto">
+                                        <div class="effect-circle-1 position-relative mx-auto rounded-circle d-flex align-items-center justify-content-center">
+                                            <div class="effect-circle-2 position-relative mx-auto rounded-circle d-flex align-items-center justify-content-center">
+                                                <div class="effect-circle-3 mx-auto rounded-circle position-relative text-white fs-4xl d-flex align-items-center justify-content-center">
+                                                    Welcome to <span class="text-primary ms-1">Steex</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="auth-user-list list-unstyled">
+                                            <li>
+                                                <div class="avatar-sm d-inline-block">
+                                                    <div class="avatar-title bg-white shadow-lg overflow-hidden rounded-circle">
+                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="avatar-sm d-inline-block">
+                                                    <div class="avatar-title bg-white shadow-lg overflow-hidden rounded-circle">
+                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="avatar-sm d-inline-block">
+                                                    <div class="avatar-title bg-white shadow-lg overflow-hidden rounded-circle">
+                                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="avatar-sm d-inline-block">
+                                                    <div class="avatar-title bg-white shadow-lg overflow-hidden rounded-circle">
+                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="avatar-sm d-inline-block">
+                                                    <div class="avatar-title bg-white shadow-lg overflow-hidden rounded-circle">
+                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="img-fluid">
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <p class="text-white opacity-75 mb-0 mt-3">
+                                            &copy;
+                                            {{year}} Steex. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end col-->
+                        <div class="col-xxl-6 mx-auto">
+                            <div class="card mb-0 border-0 shadow-none mb-0">
+                                <div class="card-body p-sm-5 m-lg-4">
+                                    <div class="text-center mt-2">
+                                        <h5 class="fs-3xl">Créez votre compte gratuitement.</h5>
+                                    </div>
+                                    <div class="p-2 mt-5">
+                                        <form [formGroup]="signupForm" (ngSubmit)="signUp()" class="needs-validation" novalidate>
+                                            
+                                            <div class="mb-3">
+                                                <label for="useremail" class="form-label">Email <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <input type="email" formControlName="email" class="form-control"
+                                                           id="email" placeholder="Entrez votre adresse e-mail"
+                                                           [class.is-invalid]="isControlInvalid('email')"
+                                                           [class.is-valid]="isControlValid('email')"
+                                                           [ngStyle]="{ 'border-color': isControlValid('email') && isControlTouched('email') ? '#259bed' : isControlInvalid('email') ? 'red' : '' }" />
+                                                    <div class="error-messages">
+                                                        <div *ngIf="signupForm.controls['email']?.errors?.['required'] && signupForm.controls['email'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            Email est requise.
+                                                        </div>
+                                                        <div *ngIf="signupForm.controls['email']?.errors?.['email'] && signupForm.controls['email'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            L'adresse e-mail doit être une adresse e-mail valide.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="lastname" class="form-label">Nom <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <input type="text" formControlName="lastname" class="form-control"
+                                                           id="lastname" placeholder="Entrez votre nom"
+                                                           [class.is-invalid]="isControlInvalid('lastname')"
+                                                           [class.is-valid]="isControlValid('lastname')"
+                                                           [ngStyle]="{ 'border-color': isControlValid('lastname') && isControlTouched('lastname') ? '#259bed' : isControlInvalid('lastname') ? 'red' : '' }" />
+                                                    <div class="error-messages">
+                                                        <div *ngIf="signupForm.controls['lastname']?.errors?.['required'] && signupForm.controls['lastname'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            Nom est requis.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="firstname" class="form-label">Prénom <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <input type="text" formControlName="firstname" class="form-control"
+                                                           id="firstname" placeholder="Entrez votre prénom"
+                                                           [class.is-invalid]="isControlInvalid('firstname')"
+                                                           [class.is-valid]="isControlValid('firstname')"
+                                                           [ngStyle]="{ 'border-color': isControlValid('firstname') && isControlTouched('firstname') ? '#259bed' : isControlInvalid('firstname') ? 'red' : '' }" />
+                                                    <div class="error-messages">
+                                                        <div *ngIf="signupForm.controls['firstname']?.errors?.['required'] && signupForm.controls['firstname'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            Prénom est requis.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="telephone" class="form-label">Téléphone <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <input type="text" formControlName="telephone" class="form-control"
+                                                           id="telephone" placeholder="Entrez votre numéro de téléphone"
+                                                           [class.is-invalid]="isControlInvalid('telephone')"
+                                                           [class.is-valid]="isControlValid('telephone')"
+                                                           [ngStyle]="{ 'border-color': isControlValid('telephone') && isControlTouched('telephone') ? '#259bed' : isControlInvalid('telephone') ? 'red' : '' }" />
+                                                    <div class="error-messages">
+                                                        <div *ngIf="signupForm.controls['telephone']?.errors?.['required'] && signupForm.controls['telephone'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            Téléphone est requis.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">Mot de passe <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <input type="password" formControlName="password" class="form-control"
+                                                           id="password" placeholder="Entrez votre mot de passe"
+                                                           [class.is-invalid]="isControlInvalid('password')"
+                                                           [class.is-valid]="isControlValid('password')"
+                                                           [ngStyle]="{ 'border-color': isControlValid('password') && isControlTouched('password') ? '#259bed' : isControlInvalid('password') ? 'red' : '' }" />
+                                                    <div class="error-messages">
+                                                        <div *ngIf="signupForm.controls['password']?.errors?.['required'] && signupForm.controls['password'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            Mot de passe est requis.
+                                                        </div>
+                                                        <div *ngIf="signupForm.controls['password']?.errors?.['pattern'] && signupForm.controls['password'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, et un chiffre.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="fonction" class="form-label">Fonction <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <input type="text" formControlName="fonction" class="form-control"
+                                                           id="fonction" placeholder="Entrez votre fonction"
+                                                           [class.is-invalid]="isControlInvalid('fonction')"
+                                                           [class.is-valid]="isControlValid('fonction')"
+                                                           [ngStyle]="{ 'border-color': isControlValid('fonction') && isControlTouched('fonction') ? '#259bed' : isControlInvalid('fonction') ? 'red' : '' }" />
+                                                    <div class="error-messages">
+                                                        <div *ngIf="signupForm.controls['fonction']?.errors?.['required'] && signupForm.controls['fonction'].touched"
+                                                             class="form-text text-danger text-warning" style="font-weight: bold;">
+                                                            Fonction est requise.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <button class="btn btn-primary w-100 fs-lg" type="submit">Inscription</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                    <div class="text-center mt-5">
+                                        <p class="mb-0">Déjà un compte ? <a [routerLink]="['/account/login']" class="fw-semibold text-secondary text-decoration-underline">Connexion</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end card-->
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+</section>

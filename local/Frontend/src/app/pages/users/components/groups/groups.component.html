@@ -1,0 +1,49 @@
+
+  <!-- Titre de page-->
+  <app-breadcrumbs 
+     title="Les activités"  
+     image="assets/images/exercice.png"
+      ></app-breadcrumbs>  
+  <div>
+    <app-reusable-table 
+    [data]="groups" 
+    [columns]="columns"
+    [title]="'Liste des activités'" 
+    [showAddButton]="true"
+    [addButtonLabel]="'Ajouter une activité'"  
+    [actions]="actions" 
+    (add)="openModal()" 
+    (actionClicked)="onAction($event)"
+    (search)="onFilterChange($event)"    
+    >
+    </app-reusable-table>
+  </div>
+  <app-modal  
+ [title]="isUpdate ? 'Modifier une activité' : 'Ajouter une activité'"
+ [formGroup]="groupForm"
+ (save)="saveGroups()" 
+  >  
+ <div class="row">
+  <div class="col-lg-6 col-md-4 col-sm-12">
+    <div class="mb-3">
+      <label class="form-label" for="gen-info-email-input">Nom d'activités</label>
+      <input type="text" class="form-control" formControlName="name"  placeholder="Libellé">
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-4 col-sm-12">
+    <div class="mb-3">
+      <label class="form-label" >Description</label>
+      <input type="text" class="form-control"  formControlName="description" placeholder="Description">
+    </div>
+  </div>
+</div>
+</app-modal>
+<!--Pagination-->
+<div class="row align-items-center mt-4 pt-2" id="pagination-element">
+  <div class="col-sm"></div>
+  <div class="col-sm-auto mt-3 mt-sm-0">
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="groupPage"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+  </app-pagination>
+  </div>
+</div>

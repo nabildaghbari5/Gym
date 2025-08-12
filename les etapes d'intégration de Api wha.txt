@@ -1,0 +1,4 @@
+les etapes d'intégration de Api whatsap avec spring boot : 
+1 - accéder a l'url suivante : https://developers.facebook.com/
+2- puis click démarrer sur le navbar et fait les verefication de compte fc puis on va passer a la page suivante : " https://developers.facebook.com/apps/?show_reminder=true" :: > pages des application 
+3-  

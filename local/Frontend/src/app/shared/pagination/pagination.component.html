@@ -1,0 +1,27 @@
+<div class="pagination-container d-flex align-items-center justify-content-between gap-4">
+    <select class="pagination-select" #paginationSize [value]="pageSize" (change)="onPageSizeChange.emit(+paginationSize.value)">
+      <option [value]="10">10</option>
+      <option [value]="20">20</option>
+      <option [value]="50">50</option>
+    </select>
+  
+    <div class="pagination-info d-flex align-items-center">
+      {{page.empty ? 0 : pageSize * pageNumber + 1}}
+      -
+      {{pageSize * pageNumber + page.numberOfElements}}
+      sur
+      {{page.totalElements}}
+    </div>
+  
+    <div class="pagination-buttons d-flex align-items-center gap-2">
+      <button (click)="onClickPrev()" class="pagination-btn" [title]="'Previous'" [disabled]="pageNumber === 0">
+        <i class=" bx bx-left-arrow"></i>
+      </button>
+      <span class="badge  ms-0 align-baseline"> {{pageNumber}}</span>
+      <button (click)="onClickNext()" class="pagination-btn" [title]="'Next'" [disabled]="page.last">
+        <i class="bx bx-right-arrow"></i>
+      </button>
+    </div>
+  </div>
+
+  <br>

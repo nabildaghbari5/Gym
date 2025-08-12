@@ -1,0 +1,34 @@
+<ng-template #extralarge let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">{{ title }}</h5>
+    <button type="button" class="btn-close" aria-label="Close"  (click)="onClose()">
+    </button>
+  </div>
+  <div class="overlay"></div>
+  <div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="formGroup" (ngSubmit)="onSave()" class="needs-validation">
+              <div class="modal-body">
+                <div class="row">
+                  <ng-content></ng-content>
+                </div>
+              </div>
+              <br>
+              <div class="modal-footer">
+                <a   class="btn btn-link link-danger fw-medium" (click)="onClose()">
+                  <i class="ri-close-line  me-1 align-middle"></i> Fermer
+                </a>
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+

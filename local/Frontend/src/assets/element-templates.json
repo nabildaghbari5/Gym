@@ -1,0 +1,42 @@
+[
+  {
+    "$schema": "https://unpkg.com/@camunda/element-templates-json-schema/resources/schema.json",
+    "name": "Custom Service Task",
+    "id": "com.mycompany.CustomServiceTask",
+    "description": "A custom service task with implementation properties",
+    "version": 1,
+    "appliesTo": ["bpmn:ServiceTask"],
+    "elementType": {
+      "value": "bpmn:ServiceTask"
+    },
+    "properties": [
+      {
+        "label": "Implementation Class",
+        "type": "String",
+        "binding": {
+          "type": "property",
+          "name": "camunda:class"
+        }
+      },
+      {
+        "label": "Async before?",
+        "type": "Boolean",
+        "binding": {
+          "type": "property",
+          "name": "camunda:asyncBefore"
+        }
+      },
+      {
+        "label": "Result Variable",
+        "type": "String",
+        "binding": {
+          "type": "property",
+          "name": "camunda:resultVariable"
+        },
+        "constraints": {
+          "notEmpty": true
+        }
+      }
+    ]
+  }
+]
