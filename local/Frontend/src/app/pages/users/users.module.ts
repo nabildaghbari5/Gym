@@ -1,6 +1,6 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UserInterneComponent } from './components/user-interne/user-interne.component';
@@ -11,7 +11,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RoleComponent } from './components/role/role.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupsComponent } from './components/groups/groups.component';
 import { RoleUserComponent } from './components/role-user/role-user.component';
 import { GroupsUserComponent } from './components/groups-user/groups-user.component';
